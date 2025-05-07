@@ -1,0 +1,54 @@
+# Node.js (Backend and Frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.* 
+
+# Logs
+logs
+*.log
+log/
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+/build
+/dist
+
+# React specific
+*.tgz
+.cache/
+.parcel-cache/
+.vite/
+
+# Coverage reports
+coverage/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+
+# MongoDB dump files
+dump/
+
+# Optional: Ignore production environment files or secrets
+config.js
+config/*.js
+
+# Optional: Ignore local dev data
+*.local
+*.bak
+
+# Optional: If using Docker
+docker-compose.override.yml
