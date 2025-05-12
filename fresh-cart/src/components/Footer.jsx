@@ -98,9 +98,9 @@ const Footer = () => {
         <div className={styles.footerNav}>
           <div className={styles.footerNavHolder}>
             <div className="tw:flex tw:gap-x-[.5rem]">
-              <NavLink className={"tw:text-[1.5rem] tw:border-r-[1px] tw:border-[#fff] tw:!p-[.5rem]"}>Home</NavLink>{" "}
-              <NavLink className={"tw:text-[1.5rem] tw:border-r-[1px] tw:border-[#fff] tw:!p-[.5rem]" }>Shop</NavLink>{" "}
-              <NavLink className={"tw:text-[1.5rem] tw:border-r-[1px] tw:border-[#fff] tw:!p-[.5rem]"}>About</NavLink > <NavLink className={"tw:text-[1.5rem]  tw:border-[#fff] tw:!p-[.5rem]"}>Contacts</NavLink>
+              <NavLink to={"/"} className={"tw:text-[1.5rem] tw:border-r-[1px] tw:border-[#fff] tw:!p-[.5rem]"}>Home</NavLink>{" "}
+              <NavLink to={"/shop"} className={"tw:text-[1.5rem] tw:border-r-[1px] tw:border-[#fff] tw:!p-[.5rem]" }>Shop</NavLink>{" "}
+              <NavLink to="/about" className={"tw:text-[1.5rem] tw:border-r-[1px] tw:border-[#fff] tw:!p-[.5rem]"}>About</NavLink > <NavLink to={"/contact"} className={"tw:text-[1.5rem]  tw:border-[#fff] tw:!p-[.5rem]"}>Contacts</NavLink>
             </div>
             <div className={styles.footerIconHolder}>
               <FaFacebookF />

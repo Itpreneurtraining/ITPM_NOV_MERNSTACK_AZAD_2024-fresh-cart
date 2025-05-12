@@ -14,6 +14,7 @@ import Slider from "react-slick";
 import DATA from "../DATA.js";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
+import { NavLink } from "react-router";
 
 const cardData = [
   {
@@ -219,7 +220,10 @@ const CardMain = () => {
               products.map((item=>{
                 return(<div key={item.id}>
                   <div className="tw:w-[80%] tw:md:w-[100%]  tw:h-[auto]" style={{margin:"0 auto"}}>
+                    <NavLink to={'shop'} className="tw:w-[100%] tw:h-[100%]">
+
                     <img className="tw:w-[100%]  tw:object-cover" src={item.img} />
+                    </NavLink>
                   </div>
                   <h3>{item.title}</h3>
                 </div>)

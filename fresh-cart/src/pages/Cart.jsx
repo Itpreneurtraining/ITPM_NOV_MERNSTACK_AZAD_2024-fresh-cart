@@ -4,21 +4,23 @@ import CartItem from "./cart/CartItem.jsx";
 // import { useSelector, useDispatch } from 'react-redux';
 import api from "../axios.js";
 import { useMain } from "../context/MainContext.jsx";
+import { NavLink } from "react-router";
 
 function Cart() {
 {/*const {CartItem}=useSelector(state=>state.Cart)
 console.log(CartItem)*/}
-const {isQuantityupdated}=useMain()
+const {isQuantityUpdated,isProductUpdated,handleTotalPrice}=useMain()
 const [loading, setLoading] = useState(true);
 const [posts, setPosts] = useState([])
 const [error, setError] = useState(null)
 const [totalSum, setTotalSum] = useState(0)
-const fetchCartItems=async()=>{
+const fetchCartItems=async ()=>{
   try{
     setLoading(true)
     const res=await api.get('/cart')
-    console.log("post res",res.data)
+    console.log("res datas",res.data)
     setPosts(res.data)
+    console.log("posts",posts)
   }
   catch(error){
     console.log(error)
@@ -41,22 +43,26 @@ const fetchCartItems=async()=>{
   const calculateTotalSum = () => {
     
     let sum=0;
-    console.log(posts)
+    // console.log(posts)
     posts.forEach((item) => {
       sum += item.price * item.quantity;
     });
     setTotalSum(sum);
     console.log("total sum",sum)
+    handleTotalPrice(sum)
   };
   
   useEffect(()=>{
-    fetchCartItems()
     calculateTotalSum()
-  },[isQuantityupdated])
+    fetchCartItems()
+    
+  },[isQuantityUpdated,isProductUpdated])
 
   
-
-
+  useEffect(()=>{
+    calculateTotalSum()
+    handleTotalPrice(totalSum)
+  },[posts])
 
   return (
     <>
@@ -103,12 +109,12 @@ const fetchCartItems=async()=>{
           <p className="total-lable">SubTotal: </p>
           <p className="total-value">{totalSum}</p>
         </div>
-        <button className="checkout-btn">Proceed To Payment</button>
+        <NavLink to={"/Payment"} className="tw:mt-0.5rem checkout-btn">Proceed To Payment</NavLink>
       </div>
     </div>:
     <>
     <div className="empty-cart">your cart is empty
-    <button className="empty-btn">Proceed To Payment</button>
+    {posts.length!==0 ?<NavLink className={"tw:w-[auto] "} to={"/Payment"}><button className="empty-btn">Proceed To Payment </button></NavLink>:<NavLink to={"/shop"} className={"tw:w-[auto]"}><button className="empty-btn">go to shop</button></NavLink> }
     </div>
     
     </>
